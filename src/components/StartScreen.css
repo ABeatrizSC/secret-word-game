@@ -1,0 +1,7 @@
+.content-container {
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+}

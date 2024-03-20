@@ -17,5 +17,29 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    margin-bottom: 5rem;
+    letter-spacing: 0.1rem;
+}
+
+p, button {
+   font-size: 1.9rem;
+}
+
+button {
+    cursor: pointer;
+    background-color: #D18922;
+    border: 0;
+    width: auto;
+    height: auto;
+    padding: 1.5rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: inherit;
+    text-transform: uppercase;
+    transition: 400ms ease-in-out;
+
+    &:hover {
+        background-color: #d18822b9;
+    }
 }
