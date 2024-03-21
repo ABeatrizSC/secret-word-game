@@ -10,7 +10,7 @@ body {
     height: 100%;
     background-color: #33435D;
     color: white;
-    padding: 3rem 6rem;
+    padding: 1rem 6rem;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -18,11 +18,15 @@ body {
 
 h1 {
     font-size: 4rem;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
     letter-spacing: 0.1rem;
 }
 
-p, button {
+h2 {
+    font-size: 2.5rem;
+}
+
+p, span, button {
    font-size: 1.9rem;
 }
 
@@ -34,6 +38,7 @@ button {
     height: auto;
     padding: 1.5rem 2rem;
     border-radius: 2rem;
+    box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.396);
     font-weight: 600;
     color: inherit;
     text-transform: uppercase;
