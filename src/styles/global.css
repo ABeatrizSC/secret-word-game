@@ -14,6 +14,7 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    text-align: center;
 }
 
 h1 {
@@ -47,4 +48,12 @@ button {
     &:hover {
         background-color: #d18822b9;
     }
+}
+
+.content-container {
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
 }

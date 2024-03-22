@@ -12,6 +12,8 @@ const stages = [
   {id: 3, name: 'end'}
 ]
 
+const guessesNumber = 3
+
 export function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
   const [words] = useState(wordsList)
@@ -19,6 +21,11 @@ export function App() {
   const [pickedWord, setPickedWord] = useState('')
   const [pickedCategory, setPickedCategory] = useState('')
   const [letters, setLetters] = useState([])
+
+  const [guessedLetters, setGuessedLetters] = useState([])
+  const [wrongLetters, setWrongLetters] = useState([])
+  const [guesses, setGuesses] = useState(guessesNumber)
+  const [score, setScore] = useState(0)
 
   const pickWordAndCategory = () => {
     const categories = Object.keys(words)
@@ -41,18 +48,48 @@ export function App() {
     setPickedCategory(category)
     setLetters(wordLetters)
 
-    console.log(word)
-    console.log(category)
-    console.log(wordLetters)
-
     setGameStage(stages[1].name)
   }
 
-  const verifyLetter = () => {
-    setGameStage(stages[2].name)
+  const verifyLetter = (letterInput) => {
+    const normalizedLetter = letterInput.toLowerCase()
+
+    if (guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)) {
+      alert('Letra já utilizada')
+      return
+    }
+
+    //push guessed letter or remove a guess
+    //letters = variavel state
+    if(letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters, 
+        normalizedLetter //add/push
+      ])
+    } else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters, 
+        normalizedLetter //add/push
+      ])
+      setGuesses((actualGuesses) => actualGuesses - 1)
+    }
   }
 
+  function resetLetterStates() {
+    setGuessedLetters([])
+    setWrongLetters([])
+  }
+
+  useEffect(() => {
+    if (guesses == 0) {
+      resetLetterStates()
+      setGameStage(stages[2].name)
+    }
+  }, [guesses])
+
   const retry = () => {
+    setScore(0)
+    setGuesses(guessesNumber)
     setGameStage(stages[0].name)
   }
 
@@ -60,8 +97,20 @@ export function App() {
     <>
       <h1>Secret Word Game</h1>
       {gameStage == 'start' && <StartScreen startGame={startGame}/>}
-      {gameStage == 'game' && <Game verifyLetter={verifyLetter} />}
-      {gameStage == 'end' && <EndScreen retry={retry} />}
+      {gameStage == 'game' && <Game 
+        verifyLetter={verifyLetter} 
+        pickedCategory={pickedCategory}
+        pickedWord={pickedWord}
+        letters={letters}
+        guessedLetters={guessedLetters}
+        wrongLetters={wrongLetters}
+        guesses={guesses}
+        score={score}
+      />}
+      {gameStage == 'end' && <EndScreen 
+        retry={retry} 
+        score={score}
+      />}
       <Footer />
     </>
   )
