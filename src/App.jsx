@@ -1,4 +1,3 @@
-import './styles/App.css'
 import { StartScreen } from './components/StartScreen'
 import { Game } from './components/Game'
 import { EndScreen } from './components/EndScreen'
@@ -12,7 +11,7 @@ const stages = [
   {id: 3, name: 'end'}
 ]
 
-const guessesNumber = 3
+const guessesNumber = 5
 
 export function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
@@ -109,7 +108,6 @@ export function App() {
 
   return (
     <>
-      <h1>Secret Word Game</h1>
       {gameStage == 'start' && <StartScreen startGame={startGame}/>}
       {gameStage == 'game' && <Game 
         verifyLetter={verifyLetter} 

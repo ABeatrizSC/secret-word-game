@@ -16,14 +16,14 @@ export function Game({ verifyLetter, pickedCategory, pickedWord, letters, guesse
         <div className='content-container'>
             <p>Pontuação: <span className="points">{score}</span></p>
             <h2>Adivinhe a palavra: </h2>
-            <p>Dica: <span className='tip'>{pickedCategory}</span></p>
-            <p>Você ainda possui <span>{guesses}</span> tentativa(s).</p>
+            <p>Dica: <span className='tip-span'>{pickedCategory}</span></p>
+            <p>Você ainda possui <span className='guesses-span'>{guesses}</span> tentativa(s).</p>
             <div className="word-container">
                 {letters.map((letter, i) =>
                     guessedLetters.includes(letter) ? (
                         <span key={i} className='letter'>{letter}</span>
                     ) : (
-                        <span key={i} className="blank-square"></span>
+                        <span key={i} className="square"></span>
                     )
                 )}
             </div>
@@ -41,10 +41,10 @@ export function Game({ verifyLetter, pickedCategory, pickedWord, letters, guesse
                 </form>
             </div>
             <div className='wrong-letters-container'>
-                <p>Letras já utilizadas:</p>
-                <div>
+                <p>Letras incorretas utilizadas:</p>
+                <div className='container-letters'>
                     {wrongLetters.map((letter, i) => (
-                        <span key={i}>{letter}, </span>
+                        <span key={i}>{letter.toUpperCase()}, </span>
                     ))}
                 </div>
             </div>
