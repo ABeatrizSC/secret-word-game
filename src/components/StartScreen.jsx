@@ -1,5 +1,3 @@
-import './StartScreen.css'
-
 export function StartScreen({ startGame }) {
     return (
         <div className='content-container'>        
