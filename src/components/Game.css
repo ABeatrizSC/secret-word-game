@@ -71,7 +71,7 @@
         
         & .container-letters {
             min-height: 4rem;
-            min-width: 40%;
+            width: 15rem;
             border: 0.1rem solid #F79C0C;
             border-radius: 1rem;
         }
