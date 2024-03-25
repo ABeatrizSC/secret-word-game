@@ -4,6 +4,7 @@ import { EndScreen } from './components/EndScreen'
 import { Footer } from './components/Footer'
 import { useCallback, useEffect, useState } from 'react'
 import { wordsList } from './data/words'
+import { toast, Toaster } from 'sonner';
 
 const stages = [
   {id: 1, name: 'start'},
@@ -52,11 +53,15 @@ export function App() {
   }, [pickWordAndCategory])
 
   const verifyLetter = (letterInput) => {
+    const inputPattern = new RegExp(/[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]/i)
+    if (!inputPattern.test(letterInput)) {
+      return toast.error('Entrada inválida')
+    }
+
     const normalizedLetter = letterInput.toLowerCase()
 
     if (guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)) {
-      alert('Letra já utilizada')
-      return
+      return toast.error('Letra já utilizada')
     }
 
     //push guessed letter or remove a guess
@@ -91,10 +96,9 @@ export function App() {
     const uniqueLetters = [... new Set(letters)]
 
     //win condition
-    if(guessedLetters.length === uniqueLetters.length) {
-      //add score
+    if(guessedLetters.length === uniqueLetters.length && guessedLetters.length !== 0) {
       setScore((actualScore) => (actualScore += 100))
-
+      toast.success('Parabéns! Palavra adivinhada')
       //start game with new word
       startGame()
     }
@@ -123,6 +127,7 @@ export function App() {
         retry={retry} 
         score={score}
       />}
+      <Toaster richColors />
       <Footer />
     </>
   )
