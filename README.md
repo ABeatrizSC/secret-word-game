@@ -21,7 +21,7 @@
 
 <h2 name="sobre">📝Sobre</h2>
 <ul style="display: flex; flex-direction: column; gap: 15px">
-  <li>Este projeto é um jogo que tem como objetivo adivinhar palavras afim de conseguir a maior pontuação possível;
+  <li>Este projeto é um jogo que tem como objetivo adivinhar palavras a fim de conseguir a maior pontuação possível;
   </li>
   <li>Para isso, o usuário poderá inserir até 5 letras erradas, sendo elas as suas tentativas no jogo. Quando as mesmas acabam, o jogo é encerrado e sua pontuação final mostrada; 
   </li>
@@ -76,9 +76,9 @@
 
 <h2 name="contato">🔍 Contato:</h2>
 <a href="mailto:anabeatrizscarmoni@gmail.com">
-<img src="https://img.shields.io/badge/email-fff.svg?logo=gmail&logoColor=red" alt="E-mail">
+  <img src="https://img.shields.io/badge/email-fff.svg?logo=gmail&logoColor=red" alt="E-mail">
 </a>
 <a href="http://www.linkedin.com/in/anabeatrizsantuccicarmoni">
-<img src="https://img.shields.io/badge/LinkedIn-0A78B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+  <img src="https://img.shields.io/badge/LinkedIn-0A78B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
 </a>
 &nbsp;&nbsp;
